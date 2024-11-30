@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <h1 class="text-center mb-4">Welcome!</h1>
+        <div class="list-group">
+            <a href="{% url 'eventmanager:advent_list' %}" class="list-group-item list-group-item-action">
+                Event Manager
+            </a>
+            <a href="{% url 'blog:blog_list' %}" class="list-group-item list-group-item-action">
+                Blog
+            </a>
+            <a href="{% url 'recipe:recipe_list' %}" class="list-group-item list-group-item-action">
+                Recipe
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+

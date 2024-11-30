@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       <meta charset="utf-8" />
+       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+       <meta name="description" content="" />
+       <meta name="author" content="" />
+       <title>Event Manager</title>
+       {% load static %}
+       <!-- Favicon -->
+       <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+       <!-- Bootstrap Icons -->
+       <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+          <!-- Bootstrap CSS -->
+       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+       <!-- Google fonts -->
+       <!--<link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+       <!-- <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />-->
+       
+       <!-- Core theme CSS (includes Bootstrap) -->
+       <link href="{% static 'css/styles.css' %}" rel="stylesheet" /> 
+    </head>
+    <body> 
+        <!-- Навигация -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Event Manager</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'eventmanager:advent_list' %}">Event List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'eventmanager:create_advent' %}">Create Event</a>
+                    </li>
+
+                    <!-- Проверка: если пользователь залогинен -->
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'eventmanager:logout' %}">Logout</a>
+                    </li>
+                    <!-- Если пользователь не залогинен, показываем ссылки на вход и регистрацию -->
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'eventmanager:login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'eventmanager:register' %}">Register</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Контент -->
+        <div class="container">
+            {% block content %}
+            <!-- Здесь будет динамический контент -->
+            {% endblock %}
+        </div>
+
+ 
+    </body>
+</html>
+
+
+
+

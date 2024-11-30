@@ -1,0 +1,29 @@
+{% extends 'eventmanager/base.html' %}
+
+{% block title %}Edit Event{% endblock %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<div class="container mt-4">
+    <h1 class="mb-4">Edit Event</h1>
+
+    <!-- Edit Form -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form|crispy }} <!-- Crispy form for better form styling -->
+        </div>
+        
+        <!-- Save and Cancel Buttons -->
+        <div class="d-flex justify-content-start align-items-center mt-3">
+            <button type="submit" class="btn btn-primary me-3">Save Changes</button>
+            <a href="{% url 'eventmanager:advent_list' %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+
+
