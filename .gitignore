@@ -54,3 +54,4 @@ core/settings.py
 
 # Virtual Environment
 venv/
+.venv/
