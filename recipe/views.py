@@ -59,3 +59,23 @@ def api_recipe(request):
     recipes = Recipe.objects.all()
     recipes_data = list(recipes.values())
     return JsonResponse({'recipe': recipes_data}, safe=False)
+
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from .permissions import IsOwnerOrReadOnly
+from .serializers import RecipeSerializer
+
+
+class RecipeListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Recipe.objects.all()
+    serializer_class = RecipeSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+
+class RecipeDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Recipe.objects.all()
+    serializer_class = RecipeSerializer
+    permission_classes = [IsOwnerOrReadOnly]
