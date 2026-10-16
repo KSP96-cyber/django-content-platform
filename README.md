@@ -34,7 +34,32 @@ This project includes multiple functionalities across three core applications:
   - Recipe management supports full CRUD functionality for authenticated users.
 
 ---
+### Recipe REST API
 
+The Recipe application also provides a REST API built with Django REST Framework.
+
+#### API Features:
+- List and retrieve recipes
+- Create recipes for authenticated users
+- Update and delete recipes
+- Automatically associate a new recipe with the authenticated user
+- Read-only access for unauthenticated users
+- Owner-based permissions: only the recipe owner can update or delete it
+
+#### API Endpoints:
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/recipes/api/recipes/` | List all recipes |
+| POST | `/recipes/api/recipes/` | Create a new recipe |
+| GET | `/recipes/api/recipes/<id>/` | Retrieve a recipe |
+| PUT | `/recipes/api/recipes/<id>/` | Update a recipe |
+| PATCH | `/recipes/api/recipes/<id>/` | Partially update a recipe |
+| DELETE | `/recipes/api/recipes/<id>/` | Delete a recipe |
+
+The API uses Django REST Framework serializers, generic API views, authentication, and custom object-level permissions.
+
+---
 ### Key Features:
 - **Image Processing**:
   - The project uses Pillow for image processing, allowing users to upload and display images for blogs, events, and recipes efficiently.
